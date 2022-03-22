@@ -1,6 +1,8 @@
 import getExchangeRate from 'api';
 import AmountInput from 'components/AmountInput';
 import DropButton from 'components/DropButton';
+import FormErr from 'components/FormErr';
+import ResultView from 'components/ResultView';
 import React, { useState, useEffect } from 'react';
 import {
   countriesForGetRate,
@@ -61,6 +63,10 @@ function App() {
     setSelectedCountry({ ...selectedCountry, receiving: value });
   };
 
+  const onChangeAmount = (value: string) => {
+    setTargetAmount(value);
+  };
+
   const validateRemit = (val: string): boolean => {
     const { stringAmount } = removeCommaAmount(val);
     if (Number(stringAmount) <= 0) {
@@ -91,10 +97,6 @@ function App() {
       setResultExchangeAmount(resultValue);
       setResultView(true);
     }
-  };
-
-  const onChangeAmount = (value: string) => {
-    setTargetAmount(value);
   };
 
   const getCaledExchangeRate = (
@@ -170,25 +172,17 @@ function App() {
             onChangeAmount={onChangeAmount}
             unit={selectedCountry.sending}
           />
-          <div>
-            {validStatus.isValid ? (
-              ''
-            ) : (
-              <>
-                <div>송금액이 바르지 않습니다.</div>
-                <div>{validStatus.validMessage}</div>
-              </>
-            )}
-          </div>
+          {!validStatus.isValid && <FormErr msg={validStatus.validMessage} />}
           <div>
             <button>Submit</button>
           </div>
         </form>
       </div>
       {resultView && (
-        <div>
-          {`수취금액은 ${resultExchangeAmount} ${selectedCountry.receiving} 입니다.`}
-        </div>
+        <ResultView
+          resultValue={resultExchangeAmount}
+          resultCountry={selectedCountry.receiving}
+        />
       )}
     </div>
   );
