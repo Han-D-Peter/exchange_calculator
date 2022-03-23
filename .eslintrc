@@ -1,15 +1,28 @@
 {
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
   "parser": "@typescript-eslint/parser",
-  "plugins": ["react", "@typescript-eslint"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
   "extends": [
-    "prettier",
-    "prettier/react",
-    "airbnb",
-    "airbnb/hooks",
+    "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
+    "next",
+    "next/core-web-vitals",
     "plugin:prettier/recommended"
   ],
-  "parserOptions": {
-    "project": "./tsconfig.json"
+  "rules": {
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
+    "@next/next/link-passhref": 0,
+    "@next/next/no-img-element": 0,
+    "react-hooks/exhaustive-deps": 0
   }
 }

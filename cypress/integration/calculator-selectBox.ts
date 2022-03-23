@@ -1,6 +1,6 @@
 describe('Select Box Test', () => {
   it('Sending country select', () => {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
       .get('[name=country]')
       .first()
       .select('AUD')

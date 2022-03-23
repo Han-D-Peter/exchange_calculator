@@ -6,11 +6,9 @@ type FormErrProps = {
 
 function FormErr({ msg }: FormErrProps) {
   return (
-    <>
-      <div data-cy="formErrTextBox" style={{ color: 'red' }}>
-        송금액이 바르지 않습니다. {msg}
-      </div>
-    </>
+    <div data-cy="formErrTextBox" style={{ color: 'red' }}>
+      송금액이 바르지 않습니다. {msg}
+    </div>
   );
 }
 

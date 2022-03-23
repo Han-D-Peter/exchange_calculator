@@ -1,11 +1,9 @@
 describe('Input value Test', () => {
   it('should go to homepage', () => {
-    cy.visit('http://localhost:3000')
-      .title()
-      .should('eq', 'Exchange Calculator');
+    cy.visit('/').title().should('eq', 'Exchange Calculator');
   });
   it('Error of typing number over 10,000 in AmountInput', () => {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
       .get('[name="toExchangeAmount"]')
       .type('100000')
       .get('[data-cy=submit]')
@@ -17,7 +15,7 @@ describe('Input value Test', () => {
       );
   });
   it('Error of typing number under 0 in AmountInput', () => {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
       .get('[data-cy=submit]')
       .click()
       .get('[data-cy=formErrTextBox]')

@@ -1,3 +1,5 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable react-hooks/exhaustive-deps */
 import getExchangeRate from 'api';
 import AmountInput from 'components/AmountInput';
 import DropButton from 'components/DropButton';
@@ -76,19 +78,20 @@ function App() {
         validMessage: '0이상의 값을 넣어주세요',
       });
       return false;
-    } else if (Number(stringAmount) > 10000) {
+    }
+    if (Number(stringAmount) > 10000) {
       setValidStatus({
         isValid: false,
         validMessage: '10,000이하의 값을 넣어주세요',
       });
       return false;
-    } else if (Number.isNaN(Number(stringAmount))) {
+    }
+    if (Number.isNaN(Number(stringAmount))) {
       setValidStatus({ isValid: false, validMessage: '숫자만 입력해주세요' });
       return false;
-    } else {
-      setValidStatus({ ...validStatus, isValid: true });
-      return true;
     }
+    setValidStatus({ ...validStatus, isValid: true });
+    return true;
   };
 
   const handleSubmit = (e: React.SyntheticEvent) => {
