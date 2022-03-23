@@ -1,6 +1,7 @@
 import getExchangeRate from 'api';
 import AmountInput from 'components/AmountInput';
 import DropButton from 'components/DropButton';
+import ExchangeRateInfo from 'components/ExchangeRateInfo';
 import FormErr from 'components/FormErr';
 import ResultView from 'components/ResultView';
 import React, { useState, useEffect } from 'react';
@@ -141,30 +142,23 @@ function App() {
   return (
     <div>
       <h1>환율 계산</h1>
-      <div>
-        <span>송금국가:</span>
-        <span>
-          <DropButton
-            selectCountry={selectedCountry.sending}
-            onSelectCountry={onSelectSendingCountry}
-            countryList={sendingCountries}
-          />
-        </span>
-      </div>
-      <div>
-        <span>수취국가:</span>
-        <span>
-          <DropButton
-            selectCountry={selectedCountry.receiving}
-            onSelectCountry={onSelectReceivingCountry}
-            countryList={receivingCountries}
-          />
-        </span>
-      </div>
-      <div>
-        <span>환율:</span>
-        <span>{`${exchangeRateDisplay} ${selectedCountry.receiving}/${selectedCountry.sending}`}</span>
-      </div>
+      <DropButton
+        title="송금국가:"
+        selectCountry={selectedCountry.sending}
+        onSelectCountry={onSelectSendingCountry}
+        countryList={sendingCountries}
+      />
+      <DropButton
+        title="수취국가:"
+        selectCountry={selectedCountry.receiving}
+        onSelectCountry={onSelectReceivingCountry}
+        countryList={receivingCountries}
+      />
+      <ExchangeRateInfo
+        exchangeRateAmount={exchangeRateDisplay}
+        receivingCountry={selectedCountry.receiving}
+        sendingCountry={selectedCountry.sending}
+      />
       <div>
         <form onSubmit={handleSubmit}>
           <AmountInput
@@ -174,7 +168,7 @@ function App() {
           />
           {!validStatus.isValid && <FormErr msg={validStatus.validMessage} />}
           <div>
-            <button>Submit</button>
+            <button data-cy="submit">Submit</button>
           </div>
         </form>
       </div>

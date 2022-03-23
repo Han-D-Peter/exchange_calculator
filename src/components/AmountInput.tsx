@@ -38,7 +38,11 @@ function AmountInput({
   return (
     <>
       <span>송금액:</span>
-      <input onChange={handleChange} value={toExchangeAmount} />
+      <input
+        name="toExchangeAmount"
+        onChange={handleChange}
+        value={toExchangeAmount}
+      />
       <span>{unit}</span>
     </>
   );
