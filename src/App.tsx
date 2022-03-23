@@ -1,5 +1,3 @@
-/* eslint-disable react/button-has-type */
-/* eslint-disable react-hooks/exhaustive-deps */
 import getExchangeRate from 'api';
 import AmountInput from 'components/AmountInput';
 import DropButton from 'components/DropButton';
