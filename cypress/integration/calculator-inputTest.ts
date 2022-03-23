@@ -1,4 +1,6 @@
-describe('Input value Test', () => {
+/// <reference types="cypress" />
+
+describe('inputTest', () => {
   it('should go to homepage', () => {
     cy.visit('/').title().should('eq', 'Exchange Calculator');
   });
@@ -22,3 +24,4 @@ describe('Input value Test', () => {
       .should('have.text', '송금액이 바르지 않습니다. 0이상의 값을 넣어주세요');
   });
 });
+export {};

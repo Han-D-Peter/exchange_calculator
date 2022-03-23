@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 describe('Select Box Test', () => {
   it('Sending country select', () => {
     cy.visit('/')
@@ -11,3 +13,4 @@ describe('Select Box Test', () => {
       .should('eq', 'JPY/AUD');
   });
 });
+export {};
