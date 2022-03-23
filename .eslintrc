@@ -12,13 +12,7 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "next",
-    "next/core-web-vitals",
-    "plugin:prettier/recommended"
-  ],
+  "extends": ["standard-react", "plugin:prettier/recommended"],
   "rules": {
     "prettier/prettier": ["error", { "endOfLine": "auto" }],
     "@next/next/link-passhref": 0,
